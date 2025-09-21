@@ -3,7 +3,6 @@ class Game:
     def __init__(self):
        self.renitialiser_partie()
 
-
     def regles_du_jeu():
         print("**************")
         print("RIDDLE GAME")
@@ -89,15 +88,13 @@ class Game:
         return choix.lower() == "o"
             
 
+def main():
+    Game.regles_du_jeu()
+    partie1 = Game()
+    partie1.partie()
 
-
-    
-    
-    
-
-Game.regles_du_jeu()
-partie1 = Game()
-partie1.partie()
+if __name__ == "__main__":
+    main()
        
         
 
