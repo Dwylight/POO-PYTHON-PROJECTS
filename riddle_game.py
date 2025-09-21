@@ -1,10 +1,8 @@
 import random
 class Game:
     def __init__(self):
-        self.score = 40
-        self.nombre_de_tentatives = 0
-        self.demander_borne()
-        self.nombre = random.randint(self.inf, self.sup)
+       self.renitialiser_partie()
+
 
     def regles_du_jeu():
         print("**************")
@@ -24,7 +22,6 @@ class Game:
         if commencer.lower() == "n":
             exit()
         else:
-            print("_______________________________")
             print()
         
     def demander_borne(self):
@@ -61,26 +58,14 @@ class Game:
                         self.demander_indice()
                 if self.score <= 0:
                     print("Perdu! Désolé, vous n'avez plus de point, le nombre gagnant était: "+ str(self.nombre))
-                    choix1 = input("voulez vous recommencer?(o/n): ")
-                    if choix1.lower == "o":
-                        print("_______________________________")
-                        print()
-                        self.nombre_de_tentatives = 0
-                        self.score = 40
-                        self.demander_borne()
-                        self.nombre = random.randint(self.inf, self.sup)
+                    if self.question():
+                        self.renitialiser_partie()
                     else:
                         break
             else:
                 print("Félicitations, vous avez gagné, votre score est :", self.score)
-                choix = input("Voulez vous recommencer?(o/n): ")
-                if choix.lower() == "oui":
-                    print("_______________________________")
-                    print()
-                    self.nombre_de_tentatives = 0
-                    self.score = 40
-                    self.demander_borne()
-                    self.nombre = random.randint(self.inf, self.sup)
+                if self.question():
+                    self.renitialiser_partie()
                 else:
                     break
 
@@ -90,6 +75,22 @@ class Game:
             print("Le nombre est plus petit!")
         else:
             print("Le nombre est plus grand!")
+
+    def renitialiser_partie(self):
+        print("_______________________________")
+        print()
+        self.nombre_de_tentatives = 0
+        self.score = 40
+        self.demander_borne()
+        self.nombre = random.randint(self.inf, self.sup)
+
+    def question(self):
+        choix = input("Voulez vous recommencer?(o/n): ")
+        return choix.lower() == "o"
+            
+
+
+
     
     
     
